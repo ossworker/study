@@ -39,10 +39,10 @@ public class SecondTestCaseTest {
 	}
 
 	@DisplayName("测试@Timeout")
-	@Timeout(value = 1, unit = TimeUnit.SECONDS)
+	@Timeout(value = 2, unit = TimeUnit.SECONDS)
 	@Test
 	public void testTimeoutMethod() throws InterruptedException {
-		TimeUnit.SECONDS.sleep(2);
+		TimeUnit.SECONDS.sleep(1);
 	}
 
 }

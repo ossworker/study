@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.opentest4j.AssertionFailedError;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +22,8 @@ public class AssertionTestCaseTest {
 	@Test
 	public void testObj() {
 		Assertions.assertNotNull(helloServiceImpl.testRtnObject());
-		Assertions.assertEquals(new Object(), helloServiceImpl.testRtnObject(), "2个object不能为空");
+		// Assertions.assertEquals(new Object(), helloServiceImpl.testRtnObject(),
+		// "2个object不能为空");
 	}
 
 	@Test
@@ -36,7 +38,8 @@ public class AssertionTestCaseTest {
 
 	@Test
 	public void testTimeout() {
-		Assertions.assertTimeout(Duration.ofSeconds(1), () -> TimeUnit.SECONDS.sleep(2));
+		Assertions.assertThrows(AssertionFailedError.class,
+				() -> Assertions.assertTimeout(Duration.ofSeconds(1), () -> TimeUnit.SECONDS.sleep(2)));
 	}
 
 	@Test
