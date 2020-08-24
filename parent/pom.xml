@@ -760,15 +760,14 @@
 							</goals>
 						</execution>
 					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>com.mycila</groupId>
+							<artifactId>license-maven-plugin-git</artifactId>
+							<version>${license-maven-plugin.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
-
-				<plugin>
-					<groupId>com.mycila</groupId>
-					<artifactId>license-maven-plugin-git</artifactId>
-					<!-- make sure you use the same version as license-maven-plugin -->
-					<version>${license-maven-plugin.version}</version>
-				</plugin>
-
 
 				<plugin>
 					<groupId>net.bytebuddy</groupId>

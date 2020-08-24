@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.workoss.study</groupId>
 	<artifactId>study</artifactId>
@@ -14,7 +15,7 @@
 	<properties>
 		<maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
 		<spring-javaformat-maven-plugin.version>0.0.23</spring-javaformat-maven-plugin.version>
-		<license-maven-plugin.version>4.0.rc1</license-maven-plugin.version>
+		<license-maven-plugin.version>4.0.rc2</license-maven-plugin.version>
 		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
 		<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
@@ -55,7 +56,7 @@
 			<name>aliyun maven</name>
 			<url>https://maven.aliyun.com/repository/public</url>
 			<snapshots>
-				<enabled>false</enabled>
+				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
@@ -103,7 +104,8 @@
 						<owner>workoss</owner>
 						<email>workoss@icloud.com</email>
 						<!--suppress UnresolvedMavenProperty -->
-						<project.inceptionYear>${license.git.copyrightYears}-${license.git.copyrightLastYear}</project.inceptionYear>
+						<project.inceptionYear>${license.git.copyrightYears}-${license.git.copyrightLastYear}
+						</project.inceptionYear>
 					</properties>
 					<mapping>
 						<java>SLASHSTAR_STYLE</java>
@@ -118,12 +120,13 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.mycila</groupId>
-				<artifactId>license-maven-plugin-git</artifactId>
-				<!-- make sure you use the same version as license-maven-plugin -->
-				<version>${license-maven-plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin-git</artifactId>
+						<version>${license-maven-plugin.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
