@@ -25,15 +25,15 @@ public class MockTest {
 	private HelloService helloService;
 
 	@Test
-	public void test01(){
+	public void test01() {
 		list.addAll(Mockito.anyList());
 		when(helloService.testRtnString()).thenReturn("hello");
 
-		Assertions.assertEquals("hello",helloService.testRtnString());
+		Assertions.assertEquals("hello", helloService.testRtnString());
 	}
 
 	@Test
-	public void testInterface(){
+	public void testInterface() {
 		System.out.println(helloService.testRtnString());
 	}
 

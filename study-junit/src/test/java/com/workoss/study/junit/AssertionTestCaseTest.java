@@ -14,37 +14,35 @@ public class AssertionTestCaseTest {
 	private HelloServiceImpl helloServiceImpl;
 
 	@BeforeEach
-	public void setUp(){
+	public void setUp() {
 		helloServiceImpl = new HelloServiceImpl();
 	}
 
 	@Test
-	public void testObj(){
+	public void testObj() {
 		Assertions.assertNotNull(helloServiceImpl.testRtnObject());
-		Assertions.assertEquals(new Object(), helloServiceImpl.testRtnObject(),"2个object不能为空");
+		Assertions.assertEquals(new Object(), helloServiceImpl.testRtnObject(), "2个object不能为空");
 	}
 
 	@Test
-	public void testString(){
+	public void testString() {
 		Assertions.assertEquals("hello", helloServiceImpl.testRtnString());
 	}
 
-
 	@Test
-	public void testThrow(){
-		Assertions.assertThrows(RuntimeException.class,()-> helloServiceImpl.testThrowException());
-	}
-
-
-	@Test
-	public void testTimeout(){
-		Assertions.assertTimeout(Duration.ofSeconds(1),()-> TimeUnit.SECONDS.sleep(2));
+	public void testThrow() {
+		Assertions.assertThrows(RuntimeException.class, () -> helloServiceImpl.testThrowException());
 	}
 
 	@Test
-	public void testArray(){
-		int[] expectedArray = new int[]{1,2,3};
-		Assertions.assertArrayEquals(expectedArray, helloServiceImpl.testRtnArray(),"array 不相同");
+	public void testTimeout() {
+		Assertions.assertTimeout(Duration.ofSeconds(1), () -> TimeUnit.SECONDS.sleep(2));
+	}
+
+	@Test
+	public void testArray() {
+		int[] expectedArray = new int[] { 1, 2, 3 };
+		Assertions.assertArrayEquals(expectedArray, helloServiceImpl.testRtnArray(), "array 不相同");
 	}
 
 }
