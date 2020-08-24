@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.workoss.study</groupId>
+	<artifactId>study</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<modules>
+		<module>parent</module>
+		<module>study-junit</module>
+	</modules>
+
+	<properties>
+		<maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+		<spring-javaformat-maven-plugin.version>0.0.23</spring-javaformat-maven-plugin.version>
+		<license-maven-plugin.version>4.0.rc1</license-maven-plugin.version>
+		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+
+	<scm>
+		<url>https://github.com/workoss/study</url>
+		<connection>
+			scm:git:git://github.com/workoss/study.git
+		</connection>
+		<developerConnection>
+			scm:git:ssh://git@github.com/workoss/study.git
+		</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<organization>
+		<name>Workoss Software, Inc.</name>
+		<url>https://www.workoss.com</url>
+	</organization>
+
+
+	<developers>
+		<developer>
+			<id>workoss</id>
+			<name>workoss</name>
+			<email>workoss@icloud.com</email>
+			<!-- <organization>Pivotal Software, Inc.</organization>
+			 <organizationUrl>https://www.spring.io</organizationUrl>-->
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<repositories>
+		<repository>
+			<id>alimaven</id>
+			<name>aliyun maven</name>
+			<url>https://maven.aliyun.com/repository/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<generateReleasePoms>false</generateReleasePoms>
+					<arguments>-DskipTests</arguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>io.spring.javaformat</groupId>
+				<artifactId>spring-javaformat-maven-plugin</artifactId>
+				<version>${spring-javaformat-maven-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>${license-maven-plugin.version}</version>
+				<configuration>
+					<licenseSets>
+						<licenseSet>
+							<header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
+							<excludes>
+								<exclude>*.txt</exclude>
+								<exclude>*.sh</exclude>
+								<exclude>*.yml</exclude>
+								<exclude>.editorconfig</exclude>
+								<exclude>.gitignore</exclude>
+								<exclude>**/README</exclude>
+								<exclude>**/*.xml</exclude>
+								<exclude>src/test/resources/**</exclude>
+								<exclude>src/main/resources/**</exclude>
+							</excludes>
+						</licenseSet>
+					</licenseSets>
+					<properties>
+						<owner>workoss</owner>
+						<email>workoss@icloud.com</email>
+						<!--suppress UnresolvedMavenProperty -->
+						<project.inceptionYear>${license.git.copyrightYears}-${license.git.copyrightLastYear}</project.inceptionYear>
+					</properties>
+					<mapping>
+						<java>SLASHSTAR_STYLE</java>
+					</mapping>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>remove</goal>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin-git</artifactId>
+				<!-- make sure you use the same version as license-maven-plugin -->
+				<version>${license-maven-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions-maven-plugin.version}</version>
+				<configuration>
+					<generateBackupPoms>false</generateBackupPoms>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
